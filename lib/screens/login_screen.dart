@@ -1,4 +1,4 @@
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_chat/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/components/rounded_button.dart';
@@ -15,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   late String email;
   late String password;
 
-  // final _auth = FirebaseAuth.instance;
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -66,15 +66,15 @@ class _LoginScreenState extends State<LoginScreen> {
               buttonText: 'Log In',
               onPressed: () async {
                 try {
-                  // final user = await _auth.signInWithEmailAndPassword(
-                  //     email: email, password: password);
+                  final user = await _auth.signInWithEmailAndPassword(
+                      email: email, password: password);
                   // ignore: unnecessary_null_comparison
-                  // if (user != null) {
-                  //   Navigator.pushNamed(
-                  //     context,
-                  //     ChatScreen.id,
-                  //   );
-                  // }
+                  if (user != null) {
+                    Navigator.pushNamed(
+                      context,
+                      ChatScreen.id,
+                    );
+                  }
                 } catch (e) {
                   print(e);
                 }
